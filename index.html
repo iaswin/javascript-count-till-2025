@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown</title>
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: sandybrown;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       height: 100vh; /* Set the height of the body to the full viewport height */
+    }
+    
+    .countdown-timer {
+        color: crimson;
+        background-color: aqua;
+    }
+    
+    .countdown-container {
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="countdown-container">
+      <div class="countdown-timer" id="countdown">
+        <div class="countdown-label">Until 2025
+
+        </div>
+
+      </div>
+     
+    </div>
+
+    <script>
+      const targetdate=new Date('2024-07-01T00:00:00')
+
+      function update()
+      {
+        const currentdate=new Date();
+
+        const timedifference=targetdate-currentdate;
+
+        const days = Math.floor(timedifference / (1000 * 60 * 60 * 24));
+
+        const hour=Math.floor((timedifference%(1000*60*60*24))/(1000*60*60));
+
+        const minutes=Math.floor((timedifference%(1000*60*60)))/(1000*60);
+
+        const seconds = Math.floor((timedifference % (1000 * 60)) / 1000);
+
+        document.getElementById('countdown').innerHTML = `${days}d ${hour}h ${minutes}m ${seconds}s`;
+
+        setTimeout(update,1000);
+
+
+
+      }
+      update()
+    </script>
+
+    
+
+
+
+</body>
+</html>
